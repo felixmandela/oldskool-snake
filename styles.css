@@ -14,12 +14,13 @@ body {
 }
 
 .main-board {
+    background-color: blanchedalmond;
     width: 60vmin;
     height: 60vmin;
+    border-radius: 10px;
 }
 
 .scoreboard {
-    background-color: blanchedalmond;
     color: brown;
     display: flex;
     justify-content: space-between;
@@ -27,8 +28,10 @@ body {
 }
 
 .play-area {
-    grid-template: repeat(30, 1fr)/repeat(30, 1fr);
     background-color: cornsilk;
+    border-radius: 0 0 10px 10px;
+    display: grid;
+    grid-template: repeat(30, 1fr)/repeat(30, 1fr);
     width: 100%;
     height: 100%;
 }
