@@ -10,11 +10,11 @@ body {
     align-items: center;
     min-height: 100vh;
     overflow: hidden;
-    background: lightcyan;
+    background: #d5bdaf;
 }
 
 .main-board {
-    background-color: blanchedalmond;
+    background-color: #f5ebe0;
     width: 60vmin;
     height: 60vmin;
     border-radius: 10px;
@@ -22,13 +22,14 @@ body {
 
 .scoreboard {
     color: brown;
+    font-weight: 600;
     display: flex;
     justify-content: space-between;
     padding: 1rem 0.7rem;
 }
 
 .play-area {
-    background-color: cornsilk;
+    background-color: #e3d5ca;
     border-radius: 0 0 10px 10px;
     display: grid;
     grid-template: repeat(30, 1fr)/repeat(30, 1fr);
