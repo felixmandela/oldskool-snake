@@ -40,3 +40,7 @@ body {
 .food {
     background-color: red;
 }
+
+.player {
+    background-color: black;
+}
