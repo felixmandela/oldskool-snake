@@ -1,5 +1,6 @@
 const playarea = document.querySelector(".play-area");
 document.addEventListener("keydown", changeDirection)
+document.addEventListener("keydown", restartGame)
 
 let foodX;
 let foodY;
@@ -7,7 +8,8 @@ let snakeX = 15;
 let snakeY = 15;
 let moveX = 0;
 let moveY = 0;
-const snakeBody = [];
+let snakeBody = [];
+let startGame;
 
 const randomFoodPosition = () => {
     foodX = Math.floor(Math.random() * 30) + 1;
@@ -33,29 +35,47 @@ function changeDirection(d) {
     };
 }
 
-const runGame = () => {
-    let newPosition = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
-    snakeX += moveX;
-    snakeY += moveY;
 
-    if (foodX === snakeX && foodY === snakeY) {
-        snakeBody.push([,]);
-        randomFoodPosition();
+
+function game() {
+    const runGame = () => {
+        let newPosition = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
+        snakeX += moveX;
+        snakeY += moveY;
+
+        if (foodX === snakeX && foodY === snakeY) {
+            snakeBody.push([,]);
+            randomFoodPosition();
+        }
+
+        for (let i = snakeBody.length - 1; i > 0; i--) {
+            snakeBody[i] = snakeBody[i - 1];
+        }
+        snakeBody[0] = [snakeY, snakeX]
+
+
+        for (let i = 0; i < snakeBody.length; i++) {
+            newPosition += `<div class="player" style="grid-area: ${snakeBody[i][0]} / ${snakeBody[i][1]}"></div>`;
+        }
+        playarea.innerHTML = newPosition;
     }
 
-    for (let i = snakeBody.length - 1; i > 0; i--) {
-        snakeBody[i] = snakeBody[i - 1];
-    }
-    snakeBody[0] = [snakeY, snakeX]
 
-
-    for (let i = 0; i < snakeBody.length; i++) {
-        newPosition += `<div class="player" style="grid-area: ${snakeBody[i][0]} / ${snakeBody[i][1]}"></div>`;
-    }
-    playarea.innerHTML = newPosition;
+    randomFoodPosition();
+    startGame = setInterval(runGame, 80)
 }
 
 
-randomFoodPosition();
-setInterval(runGame, 80)
+function restartGame(d) {
+    if (d.key === " ") {
+        clearInterval(startGame)
+        snakeX = 15
+        snakeY = 15
+        moveX = 0
+        moveY = 0
+        snakeBody = []
+        game()
+    }
+}
 
+game()
