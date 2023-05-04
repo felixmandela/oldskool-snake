@@ -42,47 +42,6 @@ function changeDirection(d) {
 
 
 
-function game() {
-    const runGame = () => {
-        let newPosition = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
-        let updatedScore = `<span class="score">SCORE: ${baseScore}</span>
-        <span class="high-score">HIGH SCORE: ${highScore}</span>`
-        snakeX += moveX;
-        snakeY += moveY;
-
-        if (foodX === snakeX && foodY === snakeY) {
-            snakeBody.push([,]);
-            randomFoodPosition();
-            if (baseScore == highScore) {
-                highScore++
-            }
-            baseScore++
-        }
-
-        if (snakeX <= 0 || snakeX > 30 || snakeY <= 0 || snakeY > 30) {
-            clearInterval(startGame)
-            return alert("game over");
-        }
-
-
-        for (let i = snakeBody.length - 1; i > 0; i--) {
-            snakeBody[i] = snakeBody[i - 1];
-        }
-        snakeBody[0] = [snakeY, snakeX]
-
-
-        for (let i = 0; i < snakeBody.length; i++) {
-            newPosition += `<div class="player" style="grid-area: ${snakeBody[i][0]} / ${snakeBody[i][1]}"></div>`;
-        }
-        scoreBoard.innerHTML = updatedScore;
-        playArea.innerHTML = newPosition;
-    }
-
-
-    randomFoodPosition();
-    startGame = setInterval(runGame, 80)
-}
-
 function restartGame() {
     clearInterval(startGame)
     snakeX = 15
@@ -99,5 +58,49 @@ function restartButton(d) {
         restartGame();
     }
 }
+
+function game() {
+    const runGame = () => {
+        let newPosition = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
+        let updatedScore = `<span class="score">SCORE: ${baseScore}</span>
+        <span class="high-score">HIGH SCORE: ${highScore}</span>`
+        snakeX += moveX;
+        snakeY += moveY;
+
+        if (foodX === snakeX && foodY === snakeY) {
+            snakeBody.push([,]);
+            randomFoodPosition();
+            if (baseScore == highScore) {
+                highScore++
+            }
+            baseScore++
+
+        }
+
+        if (snakeX <= 0 || snakeX > 30 || snakeY <= 0 || snakeY > 30) {
+            clearInterval(startGame)
+            alert("game over")
+            restartGame()
+        }
+        snakeBody[0] = [snakeY, snakeX]
+
+
+        for (let i = snakeBody.length - 1; i > 0; i--) {
+            snakeBody[i] = snakeBody[i - 1];
+        }
+
+
+        for (let i = 0; i < snakeBody.length; i++) {
+            newPosition += `<div class="player" style="grid-area: ${snakeBody[i][0]} / ${snakeBody[i][1]}"></div>`;
+        }
+        scoreBoard.innerHTML = updatedScore;
+        playArea.innerHTML = newPosition;
+    }
+
+
+    randomFoodPosition();
+    startGame = setInterval(runGame, 1000)
+}
+
 
 game()
