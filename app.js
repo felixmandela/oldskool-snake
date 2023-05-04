@@ -5,9 +5,9 @@ let foodX;
 let foodY;
 let snakeX = 15;
 let snakeY = 15;
-let newPosition = '';
 let moveX = 0;
 let moveY = 0;
+const snakeBody = [];
 
 const randomFoodPosition = () => {
     foodX = Math.floor(Math.random() * 30) + 1;
@@ -34,13 +34,28 @@ function changeDirection(d) {
 }
 
 const runGame = () => {
+    let newPosition = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
     snakeX += moveX;
     snakeY += moveY;
-    newPosition = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
-    newPosition += `<div class="player" style="grid-area: ${snakeY} / ${snakeX}"></div>`;
+
+    if (foodX === snakeX && foodY === snakeY) {
+        snakeBody.push([,]);
+        randomFoodPosition();
+    }
+
+    for (let i = snakeBody.length - 1; i > 0; i--) {
+        snakeBody[i] = snakeBody[i - 1];
+    }
+    snakeBody[0] = [snakeY, snakeX]
+
+
+    for (let i = 0; i < snakeBody.length; i++) {
+        newPosition += `<div class="player" style="grid-area: ${snakeBody[i][0]} / ${snakeBody[i][1]}"></div>`;
+    }
     playarea.innerHTML = newPosition;
 }
 
 
 randomFoodPosition();
-setInterval(runGame, 1000 / 10)
+setInterval(runGame, 80)
+
