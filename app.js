@@ -1,6 +1,6 @@
 const playarea = document.querySelector(".play-area");
 document.addEventListener("keydown", changeDirection)
-document.addEventListener("keydown", restartGame)
+document.addEventListener("keydown", restartButton)
 
 let foodX;
 let foodY;
@@ -17,19 +17,19 @@ const randomFoodPosition = () => {
 }
 
 function changeDirection(d) {
-    if (d.key == "ArrowUp") {
+    if (d.key == "ArrowUp" && moveY !== 1) {
         moveX = 0;
         moveY = -1;
     }
-    else if (d.key == "ArrowDown") {
+    else if (d.key == "ArrowDown" && moveY !== -1) {
         moveX = 0;
         moveY = 1;
     }
-    else if (d.key == "ArrowLeft") {
+    else if (d.key == "ArrowLeft" && moveX !== 1) {
         moveX = -1;
         moveY = 0;
     }
-    else if (d.key == "ArrowRight") {
+    else if (d.key == "ArrowRight" && moveX !== -1) {
         moveX = 1;
         moveY = 0;
     };
@@ -48,6 +48,11 @@ function game() {
             randomFoodPosition();
         }
 
+        if (snakeX <= 0 || snakeX > 30 || snakeY <= 0 || snakeY > 30) {
+            restartGame()
+        }
+
+
         for (let i = snakeBody.length - 1; i > 0; i--) {
             snakeBody[i] = snakeBody[i - 1];
         }
@@ -65,16 +70,19 @@ function game() {
     startGame = setInterval(runGame, 80)
 }
 
+function restartGame() {
+    clearInterval(startGame)
+    snakeX = 15
+    snakeY = 15
+    moveX = 0
+    moveY = 0
+    snakeBody = []
+    game()
+}
 
-function restartGame(d) {
+function restartButton(d) {
     if (d.key === " ") {
-        clearInterval(startGame)
-        snakeX = 15
-        snakeY = 15
-        moveX = 0
-        moveY = 0
-        snakeBody = []
-        game()
+        restartGame();
     }
 }
 
