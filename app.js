@@ -1,8 +1,7 @@
 const playArea = document.querySelector(".play-area");
 const scoreBoard = document.querySelector(".scoreboard")
-document.addEventListener("keydown", restartButton)
-document.addEventListener("keydown", changeDirection)
-
+document.addEventListener("keydown", handleRestartButton)
+document.addEventListener("keydown", handleDirectionChange)
 
 let foodX;
 let foodY;
@@ -11,96 +10,101 @@ let snakeY = 15;
 let moveX = 0;
 let moveY = 0;
 let snakeBody = [];
-let startGame;
+let runGame;
 let baseScore = 0;
 let highScore = 0;
 
-const randomFoodPosition = () => {
+const getRandomFoodPosition = () => {
     foodX = Math.floor(Math.random() * 30) + 1;
     foodY = Math.floor(Math.random() * 30) + 1;
 }
 
+function handleDirectionChange(e) {
 
-function changeDirection(d) {
-    if (d.key == "ArrowUp" && moveY !== 1) {
+    if (e.key === "ArrowUp" && moveY !== 1) {
         moveX = 0;
         moveY = -1;
     }
-    else if (d.key == "ArrowDown" && moveY !== -1) {
+    else if (e.key === "ArrowDown" && moveY !== -1) {
         moveX = 0;
         moveY = 1;
     }
-    else if (d.key == "ArrowLeft" && moveX !== 1) {
+    else if (e.key === "ArrowLeft" && moveX !== 1) {
         moveX = -1;
         moveY = 0;
     }
-    else if (d.key == "ArrowRight" && moveX !== -1) {
+    else if (e.key === "ArrowRight" && moveX !== -1) {
         moveX = 1;
         moveY = 0;
     };
 }
 
-
+function handleRestartButton(e) {
+    if (e.key === " ") {
+        restartGame();
+    }
+}
 
 function restartGame() {
-    clearInterval(startGame)
+    clearInterval(runGame)
     snakeX = 15
     snakeY = 15
     moveX = 0
     moveY = 0
     snakeBody = []
     baseScore = 0
-    game()
+    startGame()
 }
 
-function restartButton(d) {
-    if (d.key === " ") {
-        restartGame();
+function updateScoreboard() {
+    const updatedScoreboard = `
+        <span class="score">SCORE: ${baseScore}</span>
+        <span class="high-score">HIGH SCORE: ${highScore}</span>
+    `;
+
+    scoreBoard.innerHTML = updatedScoreboard;
+}
+
+function moveSnake() {
+    let newPosition = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
+
+    snakeX += moveX;
+    snakeY += moveY;
+
+    if (foodX === snakeX && foodY === snakeY) {
+        snakeBody.push([,]);
+        getRandomFoodPosition();
+        if (baseScore == highScore) {
+            highScore++
+        }
+        baseScore++
     }
-}
 
-function game() {
-    const runGame = () => {
-        let newPosition = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
-        let updatedScore = `<span class="score">SCORE: ${baseScore}</span>
-        <span class="high-score">HIGH SCORE: ${highScore}</span>`
-        snakeX += moveX;
-        snakeY += moveY;
+    if (snakeX <= 0 || snakeX > 30 || snakeY <= 0 || snakeY > 30) {
 
-        if (foodX === snakeX && foodY === snakeY) {
-            snakeBody.push([,]);
-            randomFoodPosition();
-            if (baseScore == highScore) {
-                highScore++
-            }
-            baseScore++
-
-        }
-
-        if (snakeX <= 0 || snakeX > 30 || snakeY <= 0 || snakeY > 30) {
-            clearInterval(startGame)
-            alert("game over")
-            restartGame()
-        }
-        snakeBody[0] = [snakeY, snakeX]
-
-
-        for (let i = snakeBody.length - 1; i > 0; i--) {
-            snakeBody[i] = snakeBody[i - 1];
-        }
-
-
-        for (let i = 0; i < snakeBody.length; i++) {
-            newPosition += `<div class="player" style="grid-area: ${snakeBody[i][0]} / ${snakeBody[i][1]}"></div>`;
-        }
-        scoreBoard.innerHTML = updatedScore;
-        playArea.innerHTML = newPosition;
+        alert("game over")
+        restartGame()
     }
 
 
-    randomFoodPosition();
-    startGame = setInterval(runGame, 100)
+    for (let i = snakeBody.length - 1; i > 0; i--) {
+        snakeBody[i] = snakeBody[i - 1];
+    }
+
+    snakeBody[0] = [snakeY, snakeX]
+
+
+    for (let i = 0; i < snakeBody.length; i++) {
+        newPosition += `<div class="player" style="grid-area: ${snakeBody[i][0]} / ${snakeBody[i][1]}"></div>`;
+    }
+
+    updateScoreboard();
+    playArea.innerHTML = newPosition;
 }
 
+function startGame() {
+    getRandomFoodPosition();
+    runGame = setInterval(moveSnake, 100)
+}
 
-game()
+startGame();
