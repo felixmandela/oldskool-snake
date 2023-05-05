@@ -99,7 +99,7 @@ function game() {
 
 
     randomFoodPosition();
-    startGame = setInterval(runGame, 1000)
+    startGame = setInterval(runGame, 100)
 }
 
 

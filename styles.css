@@ -1,8 +1,13 @@
+/* reset */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
+
+/* layout */
 
 body {
     display: flex;
@@ -10,15 +15,27 @@ body {
     align-items: center;
     min-height: 100vh;
     overflow: hidden;
-    background: #d5bdaf;
+    background-color: #d5bdaf;
 }
 
-.main-board {
+.game-board {
     background-color: #f5ebe0;
     width: 50vmin;
     height: 50vmin;
     border-radius: 10px;
 }
+
+.play-area {
+    background-color: #e3d5ca;
+    border-radius: 0 0 10px 10px;
+    display: grid;
+    grid-template: repeat(30, 1fr) / repeat(30, 1fr);
+    width: 100%;
+    height: 100%;
+}
+
+
+/* component */
 
 .scoreboard {
     color: brown;
@@ -26,15 +43,6 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 1rem 0.7rem;
-}
-
-.play-area {
-    background-color: #e3d5ca;
-    border-radius: 0 0 10px 10px;
-    display: grid;
-    grid-template: repeat(30, 1fr)/repeat(30, 1fr);
-    width: 100%;
-    height: 100%;
 }
 
 .food {
