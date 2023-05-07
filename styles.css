@@ -15,40 +15,60 @@ body {
     align-items: center;
     min-height: 100vh;
     overflow: hidden;
-    background-color: #d5bdaf;
+    background-color: #f0f0f0;
 }
 
-.game-board {
-    background-color: #f5ebe0;
-    width: 50vmin;
-    height: 50vmin;
+.gameboy {
+    background-color: #959595;
+    border: 1px solid black;
     border-radius: 10px;
+    padding: 40px 25px;
 }
 
-.play-area {
-    background-color: #e3d5ca;
-    border-radius: 0 0 10px 10px;
-    display: grid;
-    grid-template: repeat(30, 1fr) / repeat(30, 1fr);
-    width: 100%;
-    height: 100%;
+.around-screen {
+    background-color: #515151;
+    padding: 25px 35px;
+    border: 2px solid #ffffff;
 }
 
+.screen {
+    background-color: #d9e9c7;
+    padding: 10px 30px;
 
-/* component */
+}
 
 .scoreboard {
-    color: brown;
+    color: black;
+    font-size: 14px;
     font-weight: 600;
     display: flex;
     justify-content: space-between;
-    padding: 1rem 0.7rem;
+
 }
+
+
+.play-area {
+    border: 4px solid #7f9c20;
+    display: grid;
+    grid-template: repeat(30, 1fr) / repeat(30, 1fr);
+    width: 25vmin;
+    height: 25vmin;
+}
+
+.play-button {
+    background-color: black;
+    width: 20vmin;
+    height: 20vmin;
+}
+
+/* component */
+
 
 .food {
     background-color: red;
+    border-radius: 50%;
 }
 
 .player {
-    background-color: black;
+    background-color: #36382e;
 }
