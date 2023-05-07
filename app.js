@@ -15,8 +15,8 @@ let baseScore = 0;
 let highScore = 0;
 
 const getRandomFoodPosition = () => {
-    foodX = Math.floor(Math.random() * 30) + 1;
-    foodY = Math.floor(Math.random() * 30) + 1;
+    foodX = Math.floor(Math.random() * 20) + 1;
+    foodY = Math.floor(Math.random() * 20) + 1;
 }
 
 function handleDirectionChange(e) {
@@ -71,6 +71,8 @@ function moveSnake() {
     snakeX += moveX;
     snakeY += moveY;
 
+
+
     if (foodX === snakeX && foodY === snakeY) {
         snakeBody.push([,]);
         getRandomFoodPosition();
@@ -80,8 +82,7 @@ function moveSnake() {
         baseScore++
     }
 
-    if (snakeX <= 0 || snakeX > 30 || snakeY <= 0 || snakeY > 30) {
-
+    if (snakeX <= 0 || snakeX > 20 || snakeY <= 0 || snakeY > 20) {
         alert("game over")
         restartGame()
     }
@@ -91,8 +92,15 @@ function moveSnake() {
         snakeBody[i] = snakeBody[i - 1];
     }
 
+
     snakeBody[0] = [snakeY, snakeX]
 
+    for (let i = snakeBody.length - 1; i > 0; i--) {
+        if (snakeBody[0][0] === snakeBody[i][0] && snakeBody[0][1] === snakeBody[i][1]) {
+            alert("game over")
+            restartGame()
+        }
+    }
 
     for (let i = 0; i < snakeBody.length; i++) {
         newPosition += `<div class="player" style="grid-area: ${snakeBody[i][0]} / ${snakeBody[i][1]}"></div>`;

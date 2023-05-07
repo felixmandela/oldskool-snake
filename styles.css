@@ -20,29 +20,36 @@ body {
 
 .gameboy {
     background-color: #959595;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 40px 25px;
+    border: 1px solid gray;
+    border-radius: 7px 7px 40px 7px;
+    padding: 25px 15px;
+    box-shadow: 0px 0px 3px 1px black;
+
 }
 
 .around-screen {
     background-color: #515151;
     padding: 25px 35px;
     border: 2px solid #ffffff;
+    box-shadow: 0px 0px 2px 1px black;
+    border-radius: 7px 7px 30px 7px;
 }
 
 .screen {
     background-color: #d9e9c7;
-    padding: 10px 30px;
-
+    width: 200px;
+    height: 180px;
+    padding: 5px;
+    box-shadow: 0px 0px 2px 1px black;
 }
 
 .scoreboard {
     color: black;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 600;
     display: flex;
     justify-content: space-between;
+    margin: 0 20px;
 
 }
 
@@ -50,16 +57,141 @@ body {
 .play-area {
     border: 4px solid #7f9c20;
     display: grid;
-    grid-template: repeat(30, 1fr) / repeat(30, 1fr);
-    width: 250px;
-    height: 250px;
+    grid-template: repeat(20, 1fr) / repeat(20, 1fr);
+    width: 150px;
+    height: 150px;
+    margin: auto;
 }
 
-.play-button {
-    background-color: black;
-    width: 200px;
-    height: 200px;
+
+.handheld-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 220px
 }
+
+/* button */
+
+.button {
+    /* background-color: black; */
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.start-button {
+    background-color: lightcoral;
+    width: 35px;
+    height: 9px;
+    border-radius: 5px;
+    position: absolute;
+    top: 180px;
+    left: 120px;
+    box-shadow: 0px 1px 2px 2px black;
+}
+
+
+
+/* arrow */
+
+.arrow {
+    /* background-color: yellow; */
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+
+.arrow-up-rectangle,
+.arrow-right-rectangle,
+.arrow-down-rectangle,
+.arrow-left-rectangle {
+    box-shadow: 0px 1px 2px 2px black;
+
+}
+
+.arrow-up-rectangle {
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+    position: absolute;
+    top: 50px;
+    left: 60px;
+}
+
+.arrow-up-triangle {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid blue;
+    position: absolute;
+    top: 80px;
+    left: 60px;
+}
+
+.arrow-right-rectangle {
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    position: absolute;
+    top: 80px;
+    left: 90px;
+}
+
+.arrow-right-triangle {
+    width: 0;
+    height: 0;
+    border-right: 15px solid red;
+    border-bottom: 15px solid transparent;
+    border-top: 15px solid transparent;
+    position: absolute;
+    top: 80px;
+    left: 75px;
+}
+
+.arrow-down-rectangle {
+    width: 30px;
+    height: 30px;
+    background-color: green;
+    position: absolute;
+    top: 110px;
+    left: 60px;
+}
+
+.arrow-down-triangle {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid green;
+    position: absolute;
+    top: 95px;
+    left: 60px;
+}
+
+.arrow-left-rectangle {
+    width: 30px;
+    height: 30px;
+    background-color: orange;
+    position: absolute;
+    top: 80px;
+    left: 30px;
+}
+
+.arrow-left-triangle {
+    width: 0;
+    height: 0;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid orange;
+    border-top: 15px solid transparent;
+    position: absolute;
+    top: 80px;
+    left: 60px;
+}
+
+
+
 
 /* component */
 
