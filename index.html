@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Game</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -22,25 +25,41 @@
         </div>
         <div class="handheld-area">
             <div class="button">
-                <div class="light-toggle"></div>
-                <div class="start-button"></div>
+                <div class="light-toggle">
+                    <span class="light-text">Light</span>
+                    <label class="on-off">
+                        <input type="checkbox">
+                        <div>OI</div>
+                    </label>
+                </div>
+                <div class="audio-toggle">
+                    <span class="audio-text">Audio</span>
+                    <label class="on-off">
+                        <input type="checkbox">
+                        <div>OI</div>
+                    </label>
+                </div>
+                <div class="start-toggle">
+                    <div class="start-button"></div>
+                    <span class="start-button-text">Start</span>
+                </div>
             </div>
             <div class="arrow">
                 <div class="arrow-up">
                     <div class="arrow-up-rectangle"></div>
-                    <div class="arrow-up-triangle"></div>
+                    <div class="arrow-up-text"></div>
                 </div>
                 <div class="arrow-right">
                     <div class="arrow-right-rectangle"></div>
-                    <div class="arrow-right-triangle"></div>
+                    <div class="arrow-right-text"></div>
                 </div>
                 <div class="arrow-down">
                     <div class="arrow-down-rectangle"></div>
-                    <div class="arrow-down-triangle"></div>
+                    <div class="arrow-down-text"></div>
                 </div>
                 <div class="arrow-left">
                     <div class="arrow-left-rectangle"></div>
-                    <div class="arrow-left-triangle"></div>
+                    <div class="arrow-left-text"></div>
                 </div>
             </div>
         </div>
