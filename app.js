@@ -14,6 +14,7 @@ let runGame;
 let baseScore = 0;
 let highScore = 0;
 
+
 const getRandomFoodPosition = () => {
     foodX = Math.floor(Math.random() * 20) + 1;
     foodY = Math.floor(Math.random() * 20) + 1;
@@ -61,18 +62,20 @@ function updateScoreboard() {
         <span class="score">SCORE: ${baseScore}</span>
         <span class="high-score">HIGH SCORE: ${highScore}</span>
     `;
-
     scoreBoard.innerHTML = updatedScoreboard;
 }
 
 function moveSnake() {
+    // arrange new position for the board, currently only for food
     let newPosition = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
 
+
+    // define position based on arrow pressed
     snakeX += moveX;
     snakeY += moveY;
 
 
-
+    // logic for eating food
     if (foodX === snakeX && foodY === snakeY) {
         snakeBody.push([,]);
         getRandomFoodPosition();
@@ -82,12 +85,14 @@ function moveSnake() {
         baseScore++
     }
 
+    // logic for gameover
+    // snake crash the wall / out of bound
     if (snakeX <= 0 || snakeX > 20 || snakeY <= 0 || snakeY > 20) {
         alert("game over")
         restartGame()
     }
 
-
+    // add the snake length everytime it eats food
     for (let i = snakeBody.length - 1; i > 0; i--) {
         snakeBody[i] = snakeBody[i - 1];
     }
@@ -95,6 +100,8 @@ function moveSnake() {
 
     snakeBody[0] = [snakeY, snakeX]
 
+    // logic for gameover
+    // ssnake crash into its own body
     for (let i = snakeBody.length - 1; i > 0; i--) {
         if (snakeBody[0][0] === snakeBody[i][0] && snakeBody[0][1] === snakeBody[i][1]) {
             alert("game over")
@@ -102,11 +109,13 @@ function moveSnake() {
         }
     }
 
+    // for every added snake body part, add new element into newPosition
     for (let i = 0; i < snakeBody.length; i++) {
         newPosition += `<div class="player" style="grid-area: ${snakeBody[i][0]} / ${snakeBody[i][1]}"></div>`;
     }
 
     updateScoreboard();
+    // print and update the snake and food
     playArea.innerHTML = newPosition;
 }
 
