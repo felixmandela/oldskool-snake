@@ -188,7 +188,7 @@ body {
     box-shadow: 0px 1px 2px 2px black;
     z-index: 1;
     cursor: pointer;
-    transition: .3s;
+    transition: .2s;
 }
 
 .start-button:active {
@@ -203,6 +203,46 @@ body {
 }
 
 
+.audio-area {
+    position: relative;
+
+}
+
+.audio-area span {
+    font-size: 14px;
+    position: absolute;
+    left: 180px;
+    text-align: right;
+    width: 100px;
+    /* letter-spacing: 0.01px; */
+}
+
+.audio-area span:nth-of-type(1) {
+    top: 55px;
+
+}
+
+.audio-area span:nth-of-type(2) {
+    top: 65px;
+}
+
+.audio-area span:nth-of-type(3) {
+    top: 75px;
+}
+
+.audio-area span:nth-of-type(4) {
+    top: 85px;
+}
+
+.audio-area span:nth-of-type(5) {
+    top: 95px;
+}
+
+.audio-area span:nth-of-type(6) {
+    top: 105px;
+    left: 166px;
+
+}
 
 /* arrow */
 
@@ -222,7 +262,7 @@ body {
     background-color: #a4a4a4;
     border-radius: 50%;
     cursor: pointer;
-    transition: .3s;
+    transition: .2s;
 }
 
 .arrow-up-rectangle:active,
