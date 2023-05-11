@@ -2,6 +2,7 @@ const playArea = document.querySelector('.play-area');
 const scoreBoard = document.querySelector('.scoreboard')
 document.addEventListener('keydown', handleRestartButton)
 document.addEventListener('keydown', handleDirectionChange)
+const gameOverScreen = document.getElementById('gameover-screen')
 const screenStyle = document.getElementById('screen')
 const lightSwitch = document.getElementById('light-toggle')
 const audioSwitch = document.getElementById('audio-toggle')
@@ -99,6 +100,7 @@ startButton.onclick = function () {
 const gameOver = function () {
     clearInterval(runGame)
     screenStyle.style.filter = 'grayscale(1)';
+    gameOverScreen.style.opacity = 1;
 }
 
 
@@ -144,6 +146,7 @@ function restartGame() {
     moveY = 0
     snakeBody = []
     baseScore = 0
+    gameOverScreen.style.opacity = 0;
     startGame()
 }
 
