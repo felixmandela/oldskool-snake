@@ -96,6 +96,7 @@ startButton.onclick = function () {
 //gameover logic
 const gameOver = function () {
     clearInterval(runGame)
+    gameboyBody.style.animation = 'shake 0.2s linear';
     screenStyle.style.filter = 'grayscale(1)';
     gameOverScreen.style.opacity = 1;
 }
@@ -137,7 +138,6 @@ function restartGame() {
         playGameStartSound()
     }
     clearInterval(runGame)
-    gameboyBody.style.filter = 'none'
     snakeX = 15
     snakeY = 15
     moveX = 0
@@ -181,9 +181,10 @@ function moveSnake() {
         }
         snakeBody.push([,]);
         getRandomFoodPosition();
+        gameboyBody.style.animation = '';
         if (baseScore % 5 === 0) {
             gameboyBody.style.filter = `drop-shadow(0 0 ${baseScore * 0.04}rem rgb(255,${255 - 4 * baseScore},0))`
-
+            gameboyBody.style.animation = 'level-up 0.3s ease'
         }
 
     }
@@ -235,6 +236,8 @@ function moveSnake() {
 function startGame() {
     getRandomFoodPosition();
     screenStyle.style.filter = 'grayscale(0)';
+    gameboyBody.style.filter = 'none'
+    gameboyBody.style.animation = '';
     runGame = setInterval(moveSnake, 150)
 }
 
