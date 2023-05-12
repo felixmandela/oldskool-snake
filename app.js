@@ -2,6 +2,7 @@ const playArea = document.querySelector('.play-area');
 const scoreBoard = document.querySelector('.scoreboard')
 document.addEventListener('keydown', handleRestartButton)
 document.addEventListener('keydown', handleDirectionChange)
+const gameboyBody = document.getElementById('gameboy')
 const gameOverScreen = document.getElementById('gameover-screen')
 const screenStyle = document.getElementById('screen')
 const lightSwitch = document.getElementById('light-toggle')
@@ -27,10 +28,6 @@ let highScore = 0;
 let audioOn = false;
 
 // audio
-const playIntroSound = function () {
-    const introSound = new Audio('audio/main-screen-audio.mp3')
-    introSound.play()
-}
 
 const playSwitchSound = function () {
     const switchSound = new Audio('audio/switch-audio-2.mp3')
@@ -140,6 +137,7 @@ function restartGame() {
         playGameStartSound()
     }
     clearInterval(runGame)
+    gameboyBody.style.filter = 'none'
     snakeX = 15
     snakeY = 15
     moveX = 0
@@ -183,6 +181,10 @@ function moveSnake() {
         }
         snakeBody.push([,]);
         getRandomFoodPosition();
+        if (baseScore % 5 === 0) {
+            gameboyBody.style.filter = `drop-shadow(0 0 ${baseScore * 0.04}rem rgb(255,${255 - 4 * baseScore},0))`
+
+        }
 
     }
 
@@ -233,7 +235,7 @@ function moveSnake() {
 function startGame() {
     getRandomFoodPosition();
     screenStyle.style.filter = 'grayscale(0)';
-    runGame = setInterval(moveSnake, 130)
+    runGame = setInterval(moveSnake, 150)
 }
 
 startGame();

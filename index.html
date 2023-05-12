@@ -11,10 +11,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/cac5f5b001.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="gameboy">
+    <div id="rules-1">
+        <span>Press [SPACE] or [Start] button to start/reset the game.</span>
+    </div>
+    <div class="gameboy" id="gameboy">
         <div id="gameover-screen">
             <span>GAME OVER</span>
         </div>
@@ -51,19 +58,23 @@
             <div class="arrow">
                 <div class="arrow-up" id="arrow-up-button">
                     <div class="arrow-up-rectangle"></div>
-                    <div class="arrow-up-text"></div>
+                    <div class="arrow-up-logo"><i class="fa-solid fa-arrow-up fa-xl" style="color: #343f50;"></i>
+                    </div>
                 </div>
                 <div class="arrow-right" id="arrow-right-button">
                     <div class="arrow-right-rectangle"></div>
-                    <div class="arrow-right-text"></div>
+                    <div class="arrow-right-logo"><i class="fa-solid fa-arrow-right fa-xl" style="color: #343f50;"></i>
+                    </div>
                 </div>
                 <div class="arrow-down" id="arrow-down-button">
                     <div class="arrow-down-rectangle"></div>
-                    <div class="arrow-down-text"></div>
+                    <div class="arrow-down-logo"><i class="fa-solid fa-arrow-down fa-xl" style="color: #343f50;"></i>
+                    </div>
                 </div>
                 <div class="arrow-left" id="arrow-left-button">
                     <div class="arrow-left-rectangle"></div>
-                    <div class="arrow-left-text"></div>
+                    <div class="arrow-left-logo"><i class="fa-solid fa-arrow-left fa-xl" style="color: #343f50;"></i>
+                    </div>
                 </div>
             </div>
             <div class="audio-area">
@@ -75,6 +86,9 @@
                 <span>....</span>
             </div>
         </div>
+    </div>
+    <div id="rules-2">
+        <span>Press &larr; &uarr; &rarr; &darr; or [Arrow Key] button to move.</span>
     </div>
     <script src="app.js"></script>
 </body>

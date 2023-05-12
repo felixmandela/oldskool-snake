@@ -20,6 +20,21 @@ body {
     font-family: 'Press Start 2P', cursive;
 }
 
+#rules-1,
+#rules-2 {
+    font-family: 'Play', sans-serif;
+    font-size: 28px;
+    width: 340px;
+    text-align: center;
+    letter-spacing: 2px;
+    line-height: 35px;
+    margin: 0 30px 0;
+    overflow: hidden;
+
+}
+
+
+
 .gameboy {
     background-color: #959595;
     border: 1px solid gray;
@@ -27,13 +42,12 @@ body {
     padding: 25px 15px;
     box-shadow: 0px 0px 3px 1px black;
     position: relative;
-
 }
 
 #gameover-screen {
     position: absolute;
     font-size: 12px;
-    top: 13 0px;
+    top: 130px;
     left: 98px;
     z-index: 2;
     opacity: 0;
@@ -277,10 +291,10 @@ body {
     transition: .2s;
 }
 
-.arrow-up-rectangle:active,
-.arrow-right-rectangle:active,
-.arrow-down-rectangle:active,
-.arrow-left-rectangle:active {
+.arrow-up:active .arrow-up-rectangle,
+.arrow-right:active .arrow-right-rectangle,
+.arrow-down:active .arrow-down-rectangle,
+.arrow-left:active .arrow-left-rectangle {
     box-shadow: 0px 0px 2px 1px black;
 }
 
@@ -292,12 +306,24 @@ body {
     left: 60px;
 }
 
+.arrow-up-logo {
+    position: absolute;
+    top: 60px;
+    left: 70px;
+}
+
 .arrow-right-rectangle {
     width: 30px;
     height: 30px;
     position: absolute;
     top: 80px;
     left: 90px;
+}
+
+.arrow-right-logo {
+    position: absolute;
+    top: 90px;
+    left: 100px;
 }
 
 
@@ -309,12 +335,24 @@ body {
     left: 60px;
 }
 
+.arrow-down-logo {
+    position: absolute;
+    top: 120px;
+    left: 70px;
+}
+
 .arrow-left-rectangle {
     width: 30px;
     height: 30px;
     position: absolute;
     top: 80px;
     left: 30px;
+}
+
+.arrow-left-logo {
+    position: absolute;
+    top: 90px;
+    left: 40px;
 }
 
 
@@ -330,4 +368,47 @@ body {
 
 .player {
     background-color: #36382e;
+}
+
+
+/* media */
+@media screen and (max-width: 800px) {
+    body {
+        flex-direction: column;
+    }
+
+    #rules-1,
+    #rules-2 {
+        font-family: 'Play', sans-serif;
+        font-size: 20px;
+        width: 300px;
+        text-align: left;
+        letter-spacing: 2px;
+        line-height: 35px;
+        margin: 0;
+        overflow: hidden;
+
+    }
+
+    #rules-1 span,
+    #rules-2 span {
+        display: block;
+        animation: scroll-animation 20s linear infinite;
+        transform: translateX(100%);
+        white-space: nowrap;
+    }
+
+    #rules-2 span {
+        animation: scroll-animation 18s linear infinite;
+    }
+
+    @keyframes scroll-animation {
+        from {
+            transform: translateX(100%);
+        }
+
+        to {
+            transform: translateX(-200%);
+        }
+    }
 }
