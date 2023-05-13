@@ -17,8 +17,8 @@ const startButton = document.getElementById('start-toggle')
 
 let foodX;
 let foodY;
-let snakeX = 15;
-let snakeY = 15;
+let snakeX = 10;
+let snakeY = 10;
 let moveX = 0;
 let moveY = 0;
 let snakeBody = [];
@@ -138,8 +138,8 @@ function restartGame() {
         playGameStartSound()
     }
     clearInterval(runGame)
-    snakeX = 15
-    snakeY = 15
+    snakeX = 10
+    snakeY = 10
     moveX = 0
     moveY = 0
     snakeBody = []
@@ -183,7 +183,7 @@ function moveSnake() {
         getRandomFoodPosition();
         gameboyBody.style.animation = '';
         if (baseScore % 5 === 0) {
-            gameboyBody.style.filter = `drop-shadow(0 0 ${baseScore * 0.04}rem rgb(255,${255 - 4 * baseScore},0))`
+            gameboyBody.style.filter = `drop-shadow(0 0 ${baseScore * 0.03}rem rgb(255,${255 - 2 * baseScore},0))`
             gameboyBody.style.animation = 'level-up 0.3s ease'
         }
 
