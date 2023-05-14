@@ -30,27 +30,27 @@ let audioOn = false;
 // audio
 
 const playSwitchSound = function () {
-    const switchSound = new Audio('audio/switch-audio-2.mp3')
+    const switchSound = new Audio('assets/audio/switch-audio-2.mp3')
     switchSound.play()
 }
 
 const playGameOverSound = function () {
-    const gameOverSound = new Audio('audio/death-audio-2.mp3')
+    const gameOverSound = new Audio('assets/audio/death-audio-2.mp3')
     gameOverSound.play()
 }
 
 const playEatFoodSound = function () {
-    const eatFoodSound = new Audio('audio/eat-food-audio.mp3')
+    const eatFoodSound = new Audio('assets/audio/eat-food-audio.mp3')
     eatFoodSound.play()
 }
 
 const playLevelPassedSound = function () {
-    const levelPassedSound = new Audio('audio/level-passed-audio.mp3')
+    const levelPassedSound = new Audio('assets/audio/level-passed-audio.mp3')
     levelPassedSound.play()
 }
 
 const playGameStartSound = function () {
-    const gameStartSound = new Audio('audio/game-start-audio-2.mp3')
+    const gameStartSound = new Audio('assets/audio/game-start-audio-2.mp3')
     gameStartSound.play()
 }
 
