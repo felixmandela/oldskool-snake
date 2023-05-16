@@ -14,7 +14,6 @@ const arrowRightButton = document.getElementById('arrow-right-button')
 const startButton = document.getElementById('start-toggle')
 
 
-
 let foodX;
 let foodY;
 let snakeX = 10;
